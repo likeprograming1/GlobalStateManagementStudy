@@ -1,8 +1,12 @@
-# React + Vite
+# GlobalStateManagement
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 장점
 
-Currently, two official plugins are available:
+- 컴포넌트 트리의 각 노드에 데이터를 전달하지 않아도 다수의 컴포넌트에 데이터를 전달할 수 있다.
+- 리펙토링 과정에 개발자가 실수할 확률을 줄여준다. 이전에는 prop의 이름을 변경하기 위해서 모든 컴포넌트를 찾아다니며 코드를 수정해야 했다.
+- Prop-drilling을 하지 않아도 된다. 이전에는 앱의 데이터 흐름을 알기 매우 어려웠다. 어떤 prop이 어디서 생겨나고 어디서 사용되는지 파악이 어려웠다. Provider 패턴을 이용하면 데이터가 필요없는 컴포넌트에 불필요하게 prop을 받을 필요가 없어진다.
+- 컴포넌트들이 전역 상태에 접근할 수 있도록 Provider 패턴을 활용하여 전역 상태를 유지할 수 있다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 단점
+
+- Provider 패턴을 과하게 사용할 경우 특정 상황에서 성능 이슈가 발생할 수 있다. 컨텍스트를 참조하는 모든 컴포넌트는 컨텍스트 변경 시마다 모두 리렌더링된다.
