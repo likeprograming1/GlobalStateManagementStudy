@@ -1,36 +1,22 @@
-import React, { createContext, useState, ReactNode } from "react";
-
-type Theme = {
-  background: string;
-  color: string;
-};
-
-type ThemeContextType = {
-  theme: Theme;
-  toggleTheme: () => void;
-};
-
-const themes = {
-  light: {
-    background: "#fff",
-    color: "#000",
-  },
-  dark: {
-    background: "#171717",
-    color: "#fff",
-  },
-};
+import React, { createContext, useState } from "react";
+import { ThemeContextType, ThemeProviderProps } from "./type";
 
 export const ThemeContext = createContext<ThemeContextType | undefined>(
   undefined
 );
 
-type ThemeProviderProps = {
-  children: ReactNode;
-};
-
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState("dark");
+  const themes = {
+    light: {
+      background: "#fff",
+      color: "#000",
+    },
+    dark: {
+      background: "#171717",
+      color: "#fff",
+    },
+  };
 
   function toggleTheme() {
     setTheme(theme === "light" ? "dark" : "light");
